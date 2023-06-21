@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+*{
+margin:0;
+padding:0;
+}	
+	
+ body{
+  display:flex;
+  flex-direction:column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  font-family:sans-serif;
+ 
+}  
+
+.container{
+width:400px;
+padding:15px 0px;
+box-shadow:0px 0px 10px;
+border-radius: 10px;
+background:linear-gradient(#B37EDF,white,#F16284);
+}
+.subcontainer{
+background:linear-gradient(#B37EDF,white,#F77D9A);
+width:90%;
+height:100%;
+margin: auto;
+}
+h1{
+color:#CD0032;
+}
+input{
+width:100%;
+height:35px;
+font-size:25px;
+border-radius:5px;
+border:1px solid rgba(0,0,0,0.2);
+outline:none;
+padding-left: 10px;
+ background-color:rgba(255,255,255,0.5);
+}
+::placeholder{
+ font-size:15px;
+ display:inline-block;
+}
+#rupees2,#total{
+cursor:not-allowed;
+}
+label{
+  font-weight:bold;
+  font-size: 20px;
+  margin:15px 0px;
+  display:inline-block;
+}
+button{
+width:100%;
+height:35px;
+margin-top:15px;
+border-radius:5px;
+font-size:20px;
+font-weight:bold;
+border:1px solid rgba(255,255,255,0.5);
+}
+button img{
+width:20px;
+padding-left:10px;
+}
+h1 img{
+padding-left:30px;
+
+}
+p{
+font-size:30px;
+color:red;
+font-weight:bold;
+letter-spacing:1px;
+margin-top:20px;
+}
+</style>
+<body>
+
+    <div class="container" id="maincont">
+        <div class="subcontainer">
+				<h1>Bill calculator<img src="bill.png"></h1>
+        <label>Bill Amount :</label>
+        <input type="text" id="amount" value="" placeholder="Enter the Bill amount">
+        <label>Tips :</label>
+        <input type="number" id="tips" value="" placeholder="Tips in %">
+        <label>Rupees &#8377 :</label>
+        <input type="text" id="rupees2"value="" placeholder="" disabled>
+        <label>Total &#8377 :</label>
+        <input type="text" id="total" value="" placeholder="" disabled>
+        <button id="btn">Generate<img src="writing.png"></button>
+        </div>
+        </div> 
+	
+<script>
+let result=document.createElement("p")
+let main=document.getElementById("maincont")
+document.body.append(result);
+
+let button=document.getElementById("btn")
+ button.addEventListener("click",calculate);
+
+
+ function calculate(){
+
+let input1=document.getElementById("amount").value
+rupees=Number(input1);
+console.log(rupees)
+let input2=document.getElementById("tips").value  
+tips=Number(input2)
+console.log(tips);
+let convert=tips/100*rupees;
+console.log(convert);
+let input3=document.getElementById("rupees2")
+    input3.value=convert;
+    let total=rupees+convert;
+ let input4=document.getElementById("total")
+ input4.value=total;
+ result.innerHTML=`Your Total Bill amount is  &#8377 ${total}`
+ }
+
+</script>      
+</body>
+</html>
